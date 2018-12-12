@@ -27,23 +27,26 @@ class Settings:
 
         # 加速设置
         self.speedup_scale = 2
+        self.score_scale = 1.5
 
         self.initialize_dynamic_settings()
 
     def initialize_dynamic_settings(self):
         """初始化随游戏进行而变化的设置"""
-        self.ship_speed_factor = 2
+        self.ship_speed_factor = 20
         self.bullet_speed_factor = 2
-        self.alien_speed_factor = 2
+        self.alien_speed_factor = 5
 
         # fleet_direction为1向右移动，-1向左移动
         self.fleet_direction = 1
 
         # 计分
-        self.alien_points = 5
+        self.alien_points = 500
 
     def increase_speed(self):
         """提高速度设置"""
         self.ship_speed_factor *= self.speedup_scale
         self.bullet_speed_factor *= self.speedup_scale
         self.alien_speed_factor *= self.speedup_scale
+        self.alien_points = int(self.alien_points * self.score_scale)
+        print(self.alien_points)
